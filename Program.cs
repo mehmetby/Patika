@@ -4,93 +4,66 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace operatorler
+namespace HataYonetimi
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            //1. Atama ve İşlemli Atama
-            Console.WriteLine("*****AtamaVeIşlemliAtama*****");
-
-            int x = 24;
-            int y = 32;
-            int z = x + y;
-            Console.WriteLine(z);
-
-            x += 3;
-            Console.WriteLine(x);
-            x -= 3;
-            Console.WriteLine(x);
-            x /= 3;
-            Console.WriteLine(x);
-            x *= 3;
-            Console.WriteLine(x);
 
 
-            //2. Mantıksal Operatorler
-            // || (veya/ ya da),
-            // && (ve)
-            // ! (Değilse)
+            //try
+            //{
 
-            Console.WriteLine("******Mantıksal Operatorler*******");
+            //    Console.WriteLine("Lütfen bir sayı giriniz :");
+            //    int sayi = Convert.ToInt32(Console.ReadLine());
+            //    Console.WriteLine("Girmiş olduğunuz sayi :" + sayi);
 
-            bool IsSuccess = true;
-            bool IsCompleted = true;
-            bool IsError = false;
+            //}
 
-            if (IsSuccess || IsCompleted)
-                Console.WriteLine("Fine!");
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error :" + ex.Message.ToString());
+            //}
 
-            if (IsSuccess && IsCompleted)
-                Console.WriteLine("Perfect!!");
+            //finally
+            //{
+            //    Console.WriteLine("Mission Completed!");
+            //    Console.ReadLine();
+            //}
 
-            if (IsSuccess && !IsError)
-                Console.WriteLine("Great!!!");
+            try
+            {
+                //int a = int.Parse(null);
+                //int a = int.Parse("test");
+                int a = int.Parse("-20000000000");
 
 
-            //3. Ilıskısel Operatorler
-            // <,>,<=,>=,==,!=(eşit değildir)
-            Console.WriteLine("******IlıskıselOperatorler*******");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine("Boş bir değer girdiniz! " + ex);
+                Console.ReadLine();
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("Veri tipi uygun değil!! " + ex);
+                Console.ReadLine();
+            }
 
-            int a = 4;
-            int b = 5;
+            catch (OverflowException ex)
+            {
+                Console.WriteLine("Veri tipi uygun değil!! " + ex);
+                Console.ReadLine();
+            }
 
-            bool sonuc = a < b;
-            Console.WriteLine(sonuc);
-            sonuc = a > b;
-            Console.WriteLine(sonuc);
-            sonuc = a <= b;
-            Console.WriteLine(sonuc);
-            sonuc = a >= b;
-            Console.WriteLine(sonuc);
-            sonuc = a == b;
-            Console.WriteLine(sonuc);
-            sonuc = a != b;
-            Console.WriteLine(sonuc);
 
-            // Aritmetik Operatorler
-            Console.WriteLine("******IlıskıselOperatorler*******");
-            int sayi1 = 10;
-            int sayi2 = 5;
-            int sonuc1 = sayi1 / sayi2;
-            Console.WriteLine("Bolme Sonucu =" + sonuc1);
-            sonuc1 = sayi1 * sayi2;
-            Console.WriteLine("Carpma Sonucu =" + sonuc1);
-            sonuc1 = sayi1 + sayi2;
-            Console.WriteLine("Toplama Sonucu =" + sonuc1);
-            sonuc1 = sayi1 - sayi2;
-            Console.WriteLine("Cıkarma Sonucu =" + sonuc1);
-            int sonuc2 = sayi1++;
-            Console.WriteLine("Birer Arttır =" + sonuc2);
-            int sonuc3 = sayi1--;
-            Console.WriteLine("Birer Azalt =" + sonuc3);
 
-            // % mod alır
-            int sonuc4 = 30 % 7;
-            Console.WriteLine("Mod =" + sonuc4);
-            Console.ReadLine();
-
+            finally
+            {
+                Console.WriteLine("İşlem tamamlandı");
+                Console.ReadLine();
+            }
 
         }
     }
