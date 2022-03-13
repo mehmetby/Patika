@@ -4,66 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HataYonetimi
+namespace IfElse
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            int time = DateTime.Now.Hour;
+            string sonuc;
 
+            if (time > 5 && time < 11)
+                sonuc = "Günaydın!";
 
-            //try
-            //{
+            else if (time > 11 && time < 18)
+                sonuc = "İyi Günler!";
 
-            //    Console.WriteLine("Lütfen bir sayı giriniz :");
-            //    int sayi = Convert.ToInt32(Console.ReadLine());
-            //    Console.WriteLine("Girmiş olduğunuz sayi :" + sayi);
+            else if (time > 18 && time < 22)
+                sonuc = "İyi Akşamlar!";
 
-            //}
+            else
+                sonuc = "İyi Geceler!";
 
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("Error :" + ex.Message.ToString());
-            //}
+            Console.WriteLine(sonuc);
+            Console.ReadLine();
 
-            //finally
-            //{
-            //    Console.WriteLine("Mission Completed!");
-            //    Console.ReadLine();
-            //}
-
-            try
-            {
-                //int a = int.Parse(null);
-                //int a = int.Parse("test");
-                int a = int.Parse("-20000000000");
-
-
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine("Boş bir değer girdiniz! " + ex);
-                Console.ReadLine();
-            }
-            catch (FormatException ex)
-            {
-                Console.WriteLine("Veri tipi uygun değil!! " + ex);
-                Console.ReadLine();
-            }
-
-            catch (OverflowException ex)
-            {
-                Console.WriteLine("Veri tipi uygun değil!! " + ex);
-                Console.ReadLine();
-            }
-
-
-
-            finally
-            {
-                Console.WriteLine("İşlem tamamlandı");
-                Console.ReadLine();
-            }
 
         }
     }
