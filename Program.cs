@@ -4,65 +4,63 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwitchCaseKararYapilari
+namespace Donguler
 {
     internal class Program
     {
         static void Main(string[] args)
+        // ekrana girilen sayıya kadar olan tek sayıları yazdır.
         {
-            int month = DateTime.Now.Month;
-            switch (month)
-            {
-                case 1:
-                    Console.WriteLine("Ocak Ayındasınız.");
-                    break;
+                Console.WriteLine("Lütfen bir sayı giriniz :");
+                int sayi = int.Parse(Console.ReadLine());
+                for (int i = 0; i <= sayi; i++)
+                {
+                    if (i % 2 == 1)
+                    {
+                        Console.WriteLine(i);
+                    }
+                }
 
-                case 2:
-                    Console.WriteLine("Şubat Ayındasınız.");
-                    break;
-                case 3:
-                    Console.WriteLine("Mart Ayındasınız.");
+            // 1-1000 arasındaki tek ve çift sayıları kendi içinde toplayıp yazdır.
 
-                    break;
+            //int CiftToplam = 0;
+            //int TekToplam = 0;
 
-                case 4:
-                    Console.WriteLine("Nisan Ayındasınız.");
-                    break;
-            }
+            //for (int i = 0; i <= 1000; i++)
+            //{
+            //    if (i % 2 == 1)
+            //    {
+            //        TekToplam +=i;
+            //    }
+            //    else
 
-            switch (month)
-            {
-                case 12:
-                case 1:
-                case 2:
-                    Console.WriteLine("Kış Ayındasınız.");
-                    break;
-                case 3:
-                case 4:
-                case 5:
-                    Console.WriteLine("İlkbahar Ayındasınız.");
-                    Console.ReadLine();
-                    break;
-                case 6:
-                case 7:
-                case 8:
-                    Console.WriteLine("Yaz Ayındasınız.");
-                    break;
-                case 9:
-                case 10:
-                case 11:
-                    Console.WriteLine("Sonbahar Ayındasınız.");
-                    break;
+            //        CiftToplam += i;
+            //}
+
+            //Console.WriteLine("Çift Toplam :"+CiftToplam);
+            //Console.WriteLine("Tek Toplam :" + TekToplam);
+
+            
+
+            //Break ve Continue
+            //Console.WriteLine("***Break****");
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    if (i == 4)
+            //        break;
+            //    Console.WriteLine(i);
 
 
-                default: Console.WriteLine("Değişken Tanımlanamadı!!");
-                  break;
+            //}
+            //Console.WriteLine("***Continue****");
+            //for (int i = 0; i <10; i++)
+            //{
+            //    if (i == 4)
+            //        continue;
+            //    Console.WriteLine(i);
+            //}
 
-
-            }
-
-
-
+            Console.ReadLine();
         }
     }
 }
