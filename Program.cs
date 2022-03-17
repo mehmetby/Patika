@@ -4,63 +4,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Donguler
+namespace Diziler
 {
     internal class Program
     {
         static void Main(string[] args)
-        // ekrana girilen sayıya kadar olan tek sayıları yazdır.
         {
-                Console.WriteLine("Lütfen bir sayı giriniz :");
-                int sayi = int.Parse(Console.ReadLine());
-                for (int i = 0; i <= sayi; i++)
-                {
-                    if (i % 2 == 1)
-                    {
-                        Console.WriteLine(i);
-                    }
-                }
+            //  Dizi Tanımlama
+            string[] renkler = new string[5];
+            string[] hayvanlar = { "Flamingo", "At", "Jaguar", "Puma" };
+            int[] dizi;
+            dizi = new int[5];
 
-            // 1-1000 arasındaki tek ve çift sayıları kendi içinde toplayıp yazdır.
+            // Değer Atama ve Erişim
 
-            //int CiftToplam = 0;
-            //int TekToplam = 0;
+            dizi[0] = 10;
+            renkler[3] = "Mavi";
 
-            //for (int i = 0; i <= 1000; i++)
-            //{
-            //    if (i % 2 == 1)
-            //    {
-            //        TekToplam +=i;
-            //    }
-            //    else
-
-            //        CiftToplam += i;
-            //}
-
-            //Console.WriteLine("Çift Toplam :"+CiftToplam);
-            //Console.WriteLine("Tek Toplam :" + TekToplam);
-
-            
-
-            //Break ve Continue
-            //Console.WriteLine("***Break****");
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    if (i == 4)
-            //        break;
-            //    Console.WriteLine(i);
+            Console.WriteLine(dizi[0]);
+            Console.WriteLine(renkler[3]);
+            Console.WriteLine(hayvanlar[0]);
 
 
-            //}
-            //Console.WriteLine("***Continue****");
-            //for (int i = 0; i <10; i++)
-            //{
-            //    if (i == 4)
-            //        continue;
-            //    Console.WriteLine(i);
-            //}
 
-            Console.ReadLine();
+            // Döngülerle Dizi Kullanımı
+            //Klavyeden girilen n tane sayının ortalamasını almak.
+
+            Console.Write("Lütfen dizinin eleman sayısını giriniz: ");
+            int ElemanSayisi = int.Parse(Console.ReadLine());
+            int[] SayiDizisi = new int[ElemanSayisi];
+
+            for (int i = 0; i < ElemanSayisi; i++)
+            {
+                Console.Write("Lütfen dizinin {0}. elemanını giriniz: ", i + 1);
+                SayiDizisi[i] = int.Parse(Console.ReadLine());
+            }
+
+            int toplam = 0;
+
+            foreach (var sayi in SayiDizisi)
+                toplam += sayi;
+
+
+            Console.WriteLine("Ortalama : " + toplam / ElemanSayisi);
+
         }
+
     }
 }
