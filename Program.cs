@@ -40,8 +40,6 @@ namespace ArrayMethodlari
                 Console.WriteLine(sayi);
 
 
-            Console.ReadLine();
-
         }
     }
 }
