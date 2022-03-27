@@ -1,60 +1,101 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MethodsOverLoading
+namespace Rekürsif__Extension_Metotlar
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            string Sayi = "999";
-            int OutSayi;
-            bool sonuc = int.TryParse(Sayi, out OutSayi);
+            int result = 1;
 
+            for (int i = 1; i < 5; i++)
+            {
+                result *= 3;
+            }
+            Console.WriteLine(result);
+
+            Islemler instance = new Islemler();
+            Console.WriteLine(instance.Expo(3, 4));
+
+            string ifade = "Mehmet Baysoy İstanbul";
+            bool sonuc = ifade.CheckSpaces();
+            Console.WriteLine(sonuc);
             if (sonuc)
             {
-                Console.WriteLine("Başarılı.Veri Tipi Dönüştürülebilir!");
-                Console.WriteLine("OutSayi =" + OutSayi);
+                Console.WriteLine(ifade.RemoveWhiteSpaces());
             }
-            else Console.WriteLine("Başarısız.Veri Dönüştürülebilecek Tipte Değil!");
+            //Console.WriteLine(ifade.MakeUpperCase());
 
-            Methods instance = new Methods();
-            instance.Topla(4, 5, out int ToplamSonucu);
-            Console.WriteLine(ToplamSonucu);
+            //int[] dizi = { 9, 3, 6, 2, 1, 5, 0 };
+            //dizi.SortArray();
+            //dizi.EkranaYazdir();
 
-            //Metot OverLoading/Aşırı Yükleme
-            int ifade = 999;
-            instance.EkranaYazdir(ifade);
+            //int sayi = 5;
+            //Console.WriteLine(sayi.IsEvenNumber());
 
-            //Metot İmzası
-            //Metot Adı+ Parametre Sayısı + Parametre.
-            string Name = "Mehmet";
-            string Surname = "BAYSOY";
-            instance.EkranaYazdir(Name, Surname);
-            //ya da
-            instance.EkranaYazdir("Mehmet1", "BAYSOY");
+            //Console.WriteLine(ifade.GetFirstCharacter());
         }
     }
-    class Methods
+
+    public class Islemler
     {
-        public void Topla(int a, int b, out int Toplam)
+        public int Expo(int sayi, int us)
         {
-            Toplam = a + b;
+            if (us < 2)
+                return sayi;
+            return Expo(sayi, us - 1) * sayi;
         }
-        public void EkranaYazdir(String Veri)
+    }
+
+    public static class Extention
+    {
+        public static bool CheckSpaces(this string param)
         {
-            Console.WriteLine(Veri);
+            return param.Contains(" ");
         }
-        public void EkranaYazdir(int Veri)
+
+        public static string RemoveWhiteSpaces(this string param)
         {
-            Console.WriteLine(Veri);
+            string[] dizi = param.Split(' ');
+            return string.Join("*", dizi);
         }
-        public void EkranaYazdir(string veri1, string veri2)
+
+        public static string MakeUpperCase(this string param)
         {
-            Console.WriteLine(veri1 + " " + veri2);
+            return param.ToUpper();
+        }
+        public static string MakeLowerCase(this string param)
+        {
+            return param.ToLower();
+        }
+        public static int[] SortArray(this int[] param)
+        {
+            Array.Sort(param);
+            return param;
+        }
+
+        public static void EkranaYazdir(this int[] param)
+        {
+            foreach (var item in param)
+            {
+                Console.Write(item);
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+        }
+
+        public static bool IsEvenNumber(this int param)
+        {
+            return param % 2 == 0;
+        }
+
+        public static string GetFirstCharacter(this string param)
+        {
+            return param.Substring(0, 1);
         }
     }
 }
