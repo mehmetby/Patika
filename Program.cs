@@ -4,147 +4,73 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace patikaOdev
+namespace HazırMetotlar
 {
-    class Program
+    internal class Program
     {
-
-
-
-
-        /* Ödev 1
-         * Bir konsol uygulamasında kullanıcıdan pozitif bir sayı girmesini isteyin(n). Sonrasında kullanıcıdan n adet pozitif sayı girmesini isteyin. Kullanıcının girmiş olduğu sayılardan çift olanlar console'a yazdırın.
-         */
         static void Main(string[] args)
         {
-            int sayi1;
+            string degisken = "Dersimiz CSharp";
+            string degisken2 = "Dersimiz CSharp Hoşgeldiniz";
+            //Length
+            Console.WriteLine(degisken.Length); // Veri Sayısı
+
+            /*ToUpper
+            ToLower*/
+
+            Console.WriteLine(degisken.ToLower()); //Tüm Harfleri Küçültür.
+            Console.WriteLine(degisken.ToUpper()); //Tüm Harfleri Büyütür.
+
+            //Concat
+
+            Console.WriteLine(String.Concat(degisken, " Merhaba", " Nasılsın"));
+
+            /*CompareTo 
+            degisken1 ==degisken2 ise Sonuc=0
+            degisken1 > degisken2 ise Sonuc = 1
+            degisken1 < degisken2 ise Sonuc = -1*/
+
+            Console.WriteLine(degisken.CompareTo(degisken2));
+
+            /*Compare*/
+            Console.WriteLine(String.Compare(degisken, degisken2, true));// True Küçük büyük Duyarsız
+            Console.WriteLine(String.Compare(degisken, degisken2, false));// FAlse Büyük Küçük Duyarlı
+
+            //Contains
+
+            Console.WriteLine(degisken.Contains(degisken2));
+            Console.WriteLine(degisken.EndsWith("Hoşgeldiniz")); //Hoşgeldiniz ile bitiyor mu)
+            Console.WriteLine(degisken.EndsWith("Merhaba"));// Merhaba İle Başlıyor mu
 
 
-            Console.WriteLine("Bir adet pozitif sayı giriniz.");
-            sayi1 = Convert.ToInt32(Console.ReadLine());
+            // IndexOf
+            Console.WriteLine(degisken.IndexOf("CS"));
+            Console.WriteLine(degisken.IndexOf("Mehmet"));
+            Console.WriteLine(degisken.LastIndexOf("i")); //Son İndexi Getirir
 
-            int[] dizi1 = new int[sayi1];
+            //Insert
+            Console.WriteLine(degisken.Insert(0, "Merhaba"));
 
-            Console.WriteLine("{0} adet pozitif sayı girmeniz gerekmektedir.", sayi1);
-            for (int i = 0; i < sayi1; i++)
-            {
-                Console.Write("Lütfen {0}. sayıyı giriniz: ", i + 1);
-                dizi1[i] = Convert.ToInt32(Console.ReadLine());
-            }
+            //PadLeft, PadRight
 
+            Console.WriteLine(degisken + degisken2.PadLeft(30)); // 30. Karaktere kadar boşluk ekledi
+            Console.WriteLine(degisken.PadRight(50,'-') + degisken2); 50.Karaktere Kadar Tİre Ekledi.
+            // Remove
+            Console.WriteLine(degisken.Remove(10));
+            Console.WriteLine(degisken.Remove(10,3));// 10. İndexten itibaren 3 tane değişken sil.
 
-            Console.Write("Girmiş olduğunuz sayılar arasındaki çift sayılar: ");
-            foreach (int cift in dizi1)
-            {
-                if (cift % 2 == 0)
-                    Console.Write("{0,3} ", cift);
+            //Replace
 
+            Console.WriteLine(degisken.Replace("CSharp","C#")); // degisken verisindeki CSharp yazısını C# ileDeğiştir
 
-            }
+            // Split
+
+            Console.WriteLine(degisken.Split(' ',[1]));// degisken isimli diziyi boşluklara  göre parçalara ayır ve bana 1. indexteki değişkeni getir
+            //SubString
+            Console.WriteLine(degisken.Substring(4));// 4. İndeksten başlayıp sonuna kadar yazıdırır.
+            Console.WriteLine(degisken.Substring(4,6)); //4 indeksten başlayıp 6 tane harfi getirir.
+
             Console.ReadKey();
         }
-
-
-
-
-
-        /* 2.Ödev
-           Bir konsol uygulamasında kullanıcıdan pozitif iki sayı girmesini isteyin (n, m). Sonrasında kullanıcıdan n adet pozitif sayı girmesini isteyin. Kullanıcının girmiş olduğu sayılardan m'e eşit yada tam bölünenleri console'a yazdırın.
-        */
-
-        static void Main()
-        {
-            int n, m;
-
-            Console.WriteLine("2 adet pozitif sayı girmeniz gerekmektedir");
-            Console.WriteLine("Birinci Sayıyı Giriniz: ");
-            n = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("İkinci Sayıyı Giriniz: ");
-            m = Convert.ToInt32(Console.ReadLine());
-
-
-            int[] sayilar = new int[n];
-
-            Console.WriteLine("{0} adet positif sayı girmeniz gerekmektedir.", n);
-            for (int i = 0; i < n; i++)
-            {
-                Console.Write("{0}. sayıyı giriniz: ", i + 1);
-                sayilar[i] = Convert.ToInt32(Console.ReadLine());
-            }
-
-
-            Console.Write("Girdiginiz sayılar arasındaki {0}'e eşit veya tam bölünen sayılar: ", m);
-            foreach (int bolunen in sayilar)
-            {
-                if (bolunen % m == 0 || bolunen == m)
-                    Console.Write("{0,3}  ", bolunen);
-            }
-            Console.ReadKey();
-        }
-
-
-
-        /*3. Ödev
-         Bir konsol uygulamasında kullanıcıdan pozitif bir sayı girmesini isteyin (n). Sonrasında kullanıcıdan n adet kelime girmesi isteyin. Kullanıcının girişini yaptığı kelimeleri sondan başa doğru console'a yazdırın.
-        */
-
-        static void Main()
-         {
-             Console.WriteLine("Bir adet pozitif Sayı giriniz:");
-             int n;
-             n = Convert.ToInt32(Console.ReadLine());            
-
-             string[] kelime = new string[n];
-
-             for (int i = 0; i < n; i++)
-             {
-                 Console.Write("Lütfen {0}. kelimeyi giriniz: ",i+1);
-                 kelime[i] = Console.ReadLine();
-             }
-
-             Console.Write("Girmiş olduğunuz kelimeler: ");
-             foreach (string k in kelime) 
-             {
-                 Console.Write("{0,3} ", k);
-             }
-
-             Array.Reverse(kelime);
-
-             Console.Write("\nSondan başa doğru girmiş olduğunuz kelimeler: ");
-             foreach (string k in kelime) 
-             {
-                 Console.Write("{0,3 }", k);
-             }
-             Console.ReadKey();
-         }
-
-
-
-
-        /* 4.Ödev
-            Bir konsol uygulamasında kullanıcıdan bir cümle yazması isteyin. Cümledeki toplam kelime ve harf sayısını console'a yazdırın.
-         */
-        public static void Main()
-        {
-            string cumle;
-            int bosluk = 0;
-
-            Console.Write("Bir cümle yazınız: ");
-            cumle = Console.ReadLine();
-
-
-            for (int i = 0; i < cumle.Length; i++)
-            {
-                if (cumle[i] == ' ') bosluk++;
-
-            }
-            int harf = cumle.Length - bosluk;
-            int kelime = bosluk + 1;
-
-            Console.WriteLine("Girilen Cümle: {0}. \nKelime Sayısı: {1}. \nHarf Sayısı : {2}.", cumle, kelime, harf);
-            Console.ReadKey();
-
-        }
-
     }
 }
