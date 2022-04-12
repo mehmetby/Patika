@@ -4,98 +4,147 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rekürsif__Extension_Metotlar
+namespace patikaOdev
 {
-    internal class Program
+    class Program
     {
+
+
+
+
+        /* Ödev 1
+         * Bir konsol uygulamasında kullanıcıdan pozitif bir sayı girmesini isteyin(n). Sonrasında kullanıcıdan n adet pozitif sayı girmesini isteyin. Kullanıcının girmiş olduğu sayılardan çift olanlar console'a yazdırın.
+         */
         static void Main(string[] args)
         {
-            int result = 1;
+            int sayi1;
 
-            for (int i = 1; i < 5; i++)
+
+            Console.WriteLine("Bir adet pozitif sayı giriniz.");
+            sayi1 = Convert.ToInt32(Console.ReadLine());
+
+            int[] dizi1 = new int[sayi1];
+
+            Console.WriteLine("{0} adet pozitif sayı girmeniz gerekmektedir.", sayi1);
+            for (int i = 0; i < sayi1; i++)
             {
-                result *= 3;
+                Console.Write("Lütfen {0}. sayıyı giriniz: ", i + 1);
+                dizi1[i] = Convert.ToInt32(Console.ReadLine());
             }
-            Console.WriteLine(result);
 
-            Islemler instance = new Islemler();
-            Console.WriteLine(instance.Expo(3, 4));
 
-            string ifade = "Mehmet Baysoy İstanbul";
-            bool sonuc = ifade.CheckSpaces();
-            Console.WriteLine(sonuc);
-            if (sonuc)
+            Console.Write("Girmiş olduğunuz sayılar arasındaki çift sayılar: ");
+            foreach (int cift in dizi1)
             {
-                Console.WriteLine(ifade.RemoveWhiteSpaces());
+                if (cift % 2 == 0)
+                    Console.Write("{0,3} ", cift);
+
+
             }
-            //Console.WriteLine(ifade.MakeUpperCase());
-
-            //int[] dizi = { 9, 3, 6, 2, 1, 5, 0 };
-            //dizi.SortArray();
-            //dizi.EkranaYazdir();
-
-            //int sayi = 5;
-            //Console.WriteLine(sayi.IsEvenNumber());
-
-            //Console.WriteLine(ifade.GetFirstCharacter());
-        }
-    }
-
-    public class Islemler
-    {
-        public int Expo(int sayi, int us)
-        {
-            if (us < 2)
-                return sayi;
-            return Expo(sayi, us - 1) * sayi;
-        }
-    }
-
-    public static class Extention
-    {
-        public static bool CheckSpaces(this string param)
-        {
-            return param.Contains(" ");
+            Console.ReadKey();
         }
 
-        public static string RemoveWhiteSpaces(this string param)
-        {
-            string[] dizi = param.Split(' ');
-            return string.Join("*", dizi);
-        }
 
-        public static string MakeUpperCase(this string param)
-        {
-            return param.ToUpper();
-        }
-        public static string MakeLowerCase(this string param)
-        {
-            return param.ToLower();
-        }
-        public static int[] SortArray(this int[] param)
-        {
-            Array.Sort(param);
-            return param;
-        }
 
-        public static void EkranaYazdir(this int[] param)
+
+
+        /* 2.Ödev
+           Bir konsol uygulamasında kullanıcıdan pozitif iki sayı girmesini isteyin (n, m). Sonrasında kullanıcıdan n adet pozitif sayı girmesini isteyin. Kullanıcının girmiş olduğu sayılardan m'e eşit yada tam bölünenleri console'a yazdırın.
+        */
+
+        static void Main()
         {
-            foreach (var item in param)
+            int n, m;
+
+            Console.WriteLine("2 adet pozitif sayı girmeniz gerekmektedir");
+            Console.WriteLine("Birinci Sayıyı Giriniz: ");
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("İkinci Sayıyı Giriniz: ");
+            m = Convert.ToInt32(Console.ReadLine());
+
+
+            int[] sayilar = new int[n];
+
+            Console.WriteLine("{0} adet positif sayı girmeniz gerekmektedir.", n);
+            for (int i = 0; i < n; i++)
             {
-                Console.Write(item);
-                Console.Write(" ");
+                Console.Write("{0}. sayıyı giriniz: ", i + 1);
+                sayilar[i] = Convert.ToInt32(Console.ReadLine());
             }
-            Console.WriteLine();
+
+
+            Console.Write("Girdiginiz sayılar arasındaki {0}'e eşit veya tam bölünen sayılar: ", m);
+            foreach (int bolunen in sayilar)
+            {
+                if (bolunen % m == 0 || bolunen == m)
+                    Console.Write("{0,3}  ", bolunen);
+            }
+            Console.ReadKey();
         }
 
-        public static bool IsEvenNumber(this int param)
+
+
+        /*3. Ödev
+         Bir konsol uygulamasında kullanıcıdan pozitif bir sayı girmesini isteyin (n). Sonrasında kullanıcıdan n adet kelime girmesi isteyin. Kullanıcının girişini yaptığı kelimeleri sondan başa doğru console'a yazdırın.
+        */
+
+        static void Main()
+         {
+             Console.WriteLine("Bir adet pozitif Sayı giriniz:");
+             int n;
+             n = Convert.ToInt32(Console.ReadLine());            
+
+             string[] kelime = new string[n];
+
+             for (int i = 0; i < n; i++)
+             {
+                 Console.Write("Lütfen {0}. kelimeyi giriniz: ",i+1);
+                 kelime[i] = Console.ReadLine();
+             }
+
+             Console.Write("Girmiş olduğunuz kelimeler: ");
+             foreach (string k in kelime) 
+             {
+                 Console.Write("{0,3} ", k);
+             }
+
+             Array.Reverse(kelime);
+
+             Console.Write("\nSondan başa doğru girmiş olduğunuz kelimeler: ");
+             foreach (string k in kelime) 
+             {
+                 Console.Write("{0,3 }", k);
+             }
+             Console.ReadKey();
+         }
+
+
+
+
+        /* 4.Ödev
+            Bir konsol uygulamasında kullanıcıdan bir cümle yazması isteyin. Cümledeki toplam kelime ve harf sayısını console'a yazdırın.
+         */
+        public static void Main()
         {
-            return param % 2 == 0;
+            string cumle;
+            int bosluk = 0;
+
+            Console.Write("Bir cümle yazınız: ");
+            cumle = Console.ReadLine();
+
+
+            for (int i = 0; i < cumle.Length; i++)
+            {
+                if (cumle[i] == ' ') bosluk++;
+
+            }
+            int harf = cumle.Length - bosluk;
+            int kelime = bosluk + 1;
+
+            Console.WriteLine("Girilen Cümle: {0}. \nKelime Sayısı: {1}. \nHarf Sayısı : {2}.", cumle, kelime, harf);
+            Console.ReadKey();
+
         }
 
-        public static string GetFirstCharacter(this string param)
-        {
-            return param.Substring(0, 1);
-        }
     }
 }
